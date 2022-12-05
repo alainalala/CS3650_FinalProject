@@ -1,0 +1,24 @@
+{% extends 'booksapp/base.html' %}
+
+{% block body %}
+    <div class="container-fluid no-gutters bg-soft hero-2 row pb-2">
+        <div class="col-md-4">
+            <img src="https://images.unsplash.com/photo-1642429009223-86c6da75d021?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1900&q=80" class="img-fluid float-left" style="height: 90vh" alt="Library">
+        </div>
+        <div class="container col-md-8">
+            <div class="row height-45 align-items-center">
+                <div class="ml-5 pl-4 pt-4">
+                    <h1>Account Info</h1>
+                    <br>
+                    <p>Username: {{ user.username }}</p>
+                    <p>First Name: {{ user.first_name }}</p>
+                    <p>Last Name: {{ user.last_name }}</p>
+                    <p>Email: {{ user.email }}</p>
+                    <a href="{% url 'logout' %}" class="btn btn-dark mt-2 mr-3"><i class="bi bi-box-arrow-right px-2"></i>Log Out</a>
+                    <a href="#" class="btn btn-primary mt-2 mx-2"><i class="bi bi-pencil-square px-2"></i>Edit Account</a>
+                    <a href="#" class="btn btn-danger mt-2 "><i class="bi bi-trash px-2"></i>Delete Account</a>
+                </div>
+            </div>
+        </div>
+   </div>
+{% endblock %}

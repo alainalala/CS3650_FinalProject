@@ -1,0 +1,79 @@
+{% extends 'booksapp/base.html' %}
+{% block body %}
+    <div class="hero">
+        <div class="container">
+            <div class="row height-60 align-items-center">
+                <div class="col-sm-11 col-md-6 ml-5 pl-4">
+                    <h1 class="text-white">Welcome to Libliophile</h1>
+                    <h5 class="text-white">The Personal Library App for Book Lovers</h5>
+                    <a href="{% url 'book_list' %}" class="btn btn-danger mt-2">View My Books</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-soft py-4">
+        <div class="container py-4">
+            <div class="row justify-content-center text-center">
+                <div class="col-5 my-4">
+                    <div class="card" id="stat1" style="height: 12rem">
+                        <div class="card-text text-white">
+                            <h3>{{ total_book_count }}</h3>
+                            <h4>Total Books in My Library</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5 my-4">
+                    <div class="card" id="stat2" style="height: 12rem">
+                        <div class="card-text text-white">
+                            <h3>{{ not_started_book_count }}</h3>
+                            <h4>Total Books in My Reading List</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5 my-4">
+                    <div class="card" id="stat3" style="height: 12rem">
+                        <div class="card-text text-white">
+                            <h3>{{ in_progress_book_count }}</h3>
+                            <h4>Total Books Currently Being Read</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5 my-4">
+                    <div class="card" id="stat4" style="height: 12rem">
+                        <div class="card-text text-white">
+                            <h3>{{ finished_book_count }}</h3>
+                            <h4>Total Books Finished</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-softer py-4">
+        <div class="container py-4">
+            <h2>Recently Added</h2>
+            <div class="row bg-white py-4 px-2">
+                {% for book in recent_books %}
+                    <div class="col py-2 px-4">
+                        <div class="card border-white">
+                            <img class="card-img-top" src="{{ book.image.url }}" alt="Image of Book Cover">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ book.title }}</h5>
+                                <p class="card-list">
+                                    <i>{{ book.author }}</i>
+                                    <br>
+                                    Added: {{ book.date_added|date:"SHORT_DATE_FORMAT" }}
+                                    <br>
+                                    {{ book.read_status }}
+                                </p>
+                                <a href="{% url 'detail' book.id %}" class="btn btn-primary btn-sm">View Book Details</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

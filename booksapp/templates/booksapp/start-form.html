@@ -1,0 +1,43 @@
+{% extends 'booksapp/base.html' %}
+
+{% block body %}
+    <div class="container-fluid hero-2 pb-4 py-4 bg-soft height-85">
+        <div class="container bg-white py-4">
+            <div class="container row">
+                <div class="col-md-4">
+                    <img src="{{ book.image.url }}" class="img-fluid" alt="Image of Book Cover">
+                </div>
+                <div class="col-md-8">
+                    <h1>Start Reading "{{ book.title }}"</h1>
+                    <br>
+                    <form method="POST" class="col-md-8 justify-content-center" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row pt-2">
+                            <div class="form-group col-md-6">
+                                <label for="inputReadStatus">Current Reading Status*</label>
+                                {{ form.read_status }}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputImage">I own this book</label>
+                                {{ form.owned }}
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="form-group col-md-6">
+                                <label for="inputDateStarted">Date Started</label>
+                                {{ form.date_started }}
+                            </div>
+{#                            <div class="form-group col-md-6">#}
+{#                                <label for="inputDateFinished">Date Finished</label>#}
+{#                                {{ form.date_finished }}#}
+{#                            </div>#}
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-success px-5">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+   </div>
+
+{% endblock %}

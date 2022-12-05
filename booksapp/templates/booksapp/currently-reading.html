@@ -1,0 +1,90 @@
+{% extends 'booksapp/base.html' %}
+{% block body %}
+<ul class="nav nav-tabs bg-red" id="readingTab" role="tablist">
+    <li class="nav-item px-4" role="presentation">
+        <button class="nav-link nav-link2 text-white">
+            <a {% if request.resolver_match.url_name == 'book_list' %} class="nav-link nav-link2 active"{% endif %} href="{% url 'book_list' %}" class="nav-link nav-link2">All Books</a>
+        </button>
+    </li>
+    <li class="nav-item px-4" role="presentation">
+        <button class="nav-link nav-link2 text-white">
+            <a {% if request.resolver_match.url_name == 'reading_list' %} class="nav-link nav-link2 active"{% endif %} href="{% url 'reading_list' %}" class="nav-link nav-link2">Reading List</a>
+        </button>
+    </li>
+    <li class="nav-item px-4" role="presentation">
+        <button class="nav-link nav-link2 text-white">
+            <a {% if request.resolver_match.url_name == 'currently_reading' %} class="nav-link nav-link2 active"{% endif %} href="{% url 'currently_reading' %}" class="nav-link nav-link2">Currently Reading</a>
+        </button>
+    </li>
+    <li class="nav-item px-4" role="presentation">
+        <button class="nav-link nav-link2 text-white">
+            <a {% if request.resolver_match.url_name == 'finished_books' %} class="nav-link nav-link2 active"{% endif %} href="{% url 'finished_books' %}" class="nav-link nav-link2">Finished Books</a>
+        </button>
+    </li>
+</ul>
+<div class="container-fluid bg-soft">
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-md-10 mb-2">
+                <h2 class="text-black">Currently Reading</h2>
+                <h5>Keep track of books you are reading right now here</h5>
+                <p>Use the search bar below to find specific books then click on a book for more details.</p>
+            </div>
+            <div class="col">
+                <a href="{% url 'create_book' %}" class="btn btn-primary mt-2"><i class="bi bi-plus"></i> Add New Book</a>
+            </div>
+        </div>
+        <nav class="navbar navbar-light bg-red py-3">
+            <div class="container">
+                <form class="d-flex" method="GET">
+                    <input class="form-control br-0" type="text" placeholder="Search for Titles" aria-label="Search" name="book_title">
+                    <button class="btn btn-light" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
+        </nav>
+        <div class="bg-white py-4 px-4">
+            <div class="row d-flex justify-content-center">
+                {% for book in in_progress_book %}
+                    <div class=" mb-3 mx-2 border-white" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <a href="{% url 'detail' book.id %}"><img src="{{ book.image.url }}" class="img-fluid" alt="Image of Book Cover"></a>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="mx-4">
+                                    <h5 class="card-title">{{ book.title }}</h5>
+                                    <p class="card-text"><i>by {{ book.author }}</i></p>
+                                    <p class="card-text">Pages: {{ book.page_count }}</p>
+                                    <p class="card-text">
+                                        {{ book.description|truncatechars:100 }}
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">Started: {{ book.date_started|date:"SHORT_DATE_FORMAT" }}</small>
+                                        <br>
+                                        <a href="{% url 'finish_book' book.id %}" class="btn btn-primary btn-sm mt-2">Mark as Read</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <nav aria-label="Page navigation" class="d-flex justify-content-center">
+                <ul class="pagination">
+                    {% if in_progress_book.has_previous %}
+                        <li class="page-item"><a href="?page=1" class="page-link text-dark"><i class="bi bi-chevron-double-left px-2"></i>First</a></li>
+                        <li class="page-item"><a href="?page={{ in_progress_book.previous_page_number }}" class="page-link text-dark"><i class="bi bi-chevron-left px-2"></i>Previous</a></li>
+                    {% endif %}
+                    <li class="page-item"><div class="page-link text-dark">Page: {{ in_progress_book.number }} of {{ in_progress_book.paginator.num_pages }}</div></li>
+                    {% if not_started_book.has_next %}
+                        <li class="page-item"><a href="?page={{ in_progress_book.next_page_number }}" class="page-link text-dark">Next<i class="bi bi-chevron-right px-2"></i></a></li>
+                        <li class="page-item"><a href="?page={{ in_progress_book.paginator.num_pages }}" class="page-link text-dark">Last<i class="bi bi-chevron-double-right px-2"></i></a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

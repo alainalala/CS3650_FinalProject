@@ -1,0 +1,113 @@
+{% extends 'booksapp/base.html' %}
+
+{% block body %}
+    <div class="container-fluid hero-2 pb-4 py-4 bg-soft">
+        <div class="container bg-white py-4">
+            <div class="container">
+                <div class="container">
+                    <h1>Add Book</h1>
+                    <br>
+                    <form method="POST" class="col-md-8 justify-content-center" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col form-group">
+                                <label for="inputTitle">User*: {{ user.username }}</label>
+{#                                <input type="text" value="{{ user.username }}" name="user">#}
+                                {{ form.user }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col form-group">
+                                <label for="inputTitle">Title*</label>
+                                {{ form.title }}
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="form-group col-md-6">
+                                <label for="inputAuthor">Author*</label>
+                                {{ form.author }}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputGenre">Genre*</label>
+                                {{ form.genre }}
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="form-group">
+                                <label for="inputDescription">Description</label>
+                                {{ form.description }}
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="form-group">
+                                <label for="inputImage">Image</label>
+                                {{ form.image }}
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="form-group col-md-6">
+                                <label for="inputPageCount">Page Count</label>
+                                {{ form.page_count }}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputRecommended">Recommended By</label>
+                                {{ form.recommended_by }}
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="form-group col-md-6">
+                                <label for="inputSeriesName">Series Name</label>
+                                {{ form.series_name }}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputSeriesNumber">Number in Series</label>
+                                {{ form.series_number }}
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="form-group">
+                                <label for="inputImage">I own this book</label>
+                                {{ form.owned }}
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="form-group col-md-6">
+                                <label for="inputReadStatus">Current Reading Status*</label>
+                                {{ form.read_status }}
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="form-group col-md-6">
+                                <label for="inputDateStarted">Date Started</label>
+                                {{ form.date_started }}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputDateFinished">Date Finished</label>
+                                {{ form.date_finished }}
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="form-group col-md-6">
+                                <label for="inputRating">Rating</label>
+                                {{ form.rating }}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputTimesRead">Times Read</label>
+                                {{ form.times_read }}
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="form-group">
+                                <label for="inputNotes">Notes</label>
+                                {{ form.notes }}
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-success px-5">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+   </div>
+
+{% endblock %}

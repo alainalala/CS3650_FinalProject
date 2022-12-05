@@ -1,0 +1,147 @@
+h1 {
+    font-family: 'Baskervville', serif;
+    font-size: xxx-large;
+}
+h2 {
+    font-family: 'Baskervville', serif;
+    font-size: xx-large;
+}
+h3 {
+    font-family: 'Baskervville', serif;
+    font-size: 75pt;
+}
+h4 {
+    font-family: 'Baskervville', serif;
+    font-size: large;
+}
+h5 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    font-size: larger;
+}
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+.login-hero {
+    background: url(https://images.unsplash.com/photo-1619641554018-8351f85d3e20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80)center/cover no-repeat fixed;
+}
+.hero {
+    background: url(https://images.unsplash.com/photo-1595123550441-d377e017de6a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1306&q=80)right/cover no-repeat fixed;
+}
+.hero-2 {
+    padding-left: 50px;
+}
+.height-60 {
+    min-height: 60vh;
+}
+.nav-link {
+    font-family: 'Baskervville', serif;
+    font-size: large;
+    font-weight: normal;
+}
+.btn {
+    border-radius: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+.bg-soft {
+    background-color: #E8E3DD;
+}
+.bg-softer {
+    background-color: #F4F2EF;
+}
+.card {
+    border-radius: 0;
+}
+#stat1 {
+    background-color: #4D6A6D;
+}
+#stat2 {
+    background-color: #43603E;
+}
+#stat3 {
+    background-color: #834031;
+}
+#stat4 {
+    background-color: #7B4A20;
+}
+.btn-danger {
+    background-color: #834031;
+    border-color: #834031;
+}
+.btn-success {
+    background-color: #43603E;
+    border-color: #43603E;
+}
+.card-title {
+    font-family: 'Baskervville', serif;
+}
+.card-list {
+    font-family: 'Open Sans', sans-serif;
+}
+.btn-primary {
+    background-color: #4D6A6D;
+    border-color: #4D6A6D;
+}
+.nav-pills .nav-link {
+    background: 0 0;
+    border: 0;
+    border-radius: 0rem;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #2f8886;
+}
+.mobile-active {
+    border-bottom: white 6px solid;
+}
+.nav-tabs {
+    border-bottom: 0px;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: white;
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: white 6px solid;
+}
+.bg-red {
+    background-color: #834031;
+}
+.nav-link2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: medium;
+    font-weight: lighter;
+    color: white;
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: white 6px solid;
+}
+.br-0 {
+    border-radius: 0;
+}
+.height-85 {
+    min-height: 85vh;
+}
+.height-45 {
+    min-height: 45vh;
+}
+.height {
+    min-height: 100vh;
+}
+.book-card {
+    width: 1000px;
+}
+#more {
+    display: none;
+}
+.width {
+    min-width: 100vw;
+}
+.register-link {
+    text-decoration: underline;
+    color: black;
+}
+.btn-dark {
+    background-color: #402D1D;
+    border-color: #402D1D;
+}

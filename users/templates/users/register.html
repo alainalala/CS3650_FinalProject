@@ -1,0 +1,58 @@
+{% extends 'booksapp/base2.html' %}
+
+{% block body %}
+    <div class="container-fluid height hero-2 pt-2 bg-soft">
+        <div class="pb-4">
+            <a href="{% url 'login' %}" class="btn btn-outline-dark">Go Back to Login</a>
+        </div>
+        <div class="container bg-white py-4 px-4">
+            <div class="row height-45 align-items-center">
+                <div class="ml-5 pl-4">
+                    <h1>Create New Account</h1>
+                    <br>
+                    <form method="POST" class="col-md-8">
+                        {% csrf_token %}
+                        <div class="form-group mb-2">
+                            <label for="inputUsername">Username</label>
+                            <br>
+                            {{ form.username }}
+                        </div>
+                        <div class="row">
+                            <div class="col form-group mb-2">
+                                <label for="inputFirst">First Name</label>
+                                <br>
+                                {{ form.first_name }}
+                            </div>
+                            <div class="col form-group mb-2">
+                                <label for="inputLast">Last Name</label>
+                                <br>
+                                {{ form.last_name }}
+                            </div>
+                        </div>
+                        <div class="col form-group mb-2">
+                            <label for="inputEmail">Email</label>
+                            <br>
+                            {{ form.email }}
+                        </div>
+                        <div class="col form-group mb-2">
+                            <label for="inputPass1">Password</label>
+                            <br>
+                            {{ form.password1 }}
+                            <small class="form-text">
+                                Your password can’t be too similar to your other personal information. <br>
+                                Your password must contain at least 8 characters. <br>
+                                Your password can’t be a commonly used password. <br>
+                                Your password can’t be entirely numeric.</small>
+                        </div>
+                        <div class="col form-group mb-2">
+                            <label for="inputPass2">Confirm Password</label>
+                            <br>
+                            {{ form.password2 }}
+                        </div>
+                        <button type="submit" class="btn btn-success px-3 mt-3">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+   </div>
+{% endblock %}

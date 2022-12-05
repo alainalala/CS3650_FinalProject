@@ -1,0 +1,179 @@
+{% extends 'booksapp/base.html' %}
+
+{% block body %}
+<div class="bg-soft pb-5">
+    <div class="pt-2">
+        <a href="{% url 'book_list' %}" class="btn btn-success">Go Back to Book List</a>
+    </div>
+    <div class="py-2 container">
+        <h1>Book Details</h1>
+    </div>
+    <div class="container-md pt-3 my-2 col-md-10 bg-white">
+        <div class="row justify-content-around pb-3 col-md-9">
+            <div class="col-md-4">
+                <img src="{{ book.image.url }}" class="img-fluid" alt="Image of Book Cover">
+            </div>
+            <div class="col-md-8">
+                <h2>{{ book.title }}</h2>
+                <div class="row">
+                    <div class="col-md-8"><h6>By {{ book.author }}</h6></div>
+                    {% if book.rating == 5 %}
+                        <div class="row no-gutters col-4">
+                            <i class="bi bi-star-fill col text-warning px-0"></i>
+                            <i class="bi bi-star-fill col text-warning px-0"></i>
+                            <i class="bi bi-star-fill col text-warning px-0"></i>
+                            <i class="bi bi-star-fill col text-warning px-0"></i>
+                            <i class="bi bi-star-fill col text-warning px-0"></i>
+                            {{ book.rating }}
+                        </div>
+                    {% elif book.rating == 4 %}
+                        <div class="row no-gutters col-3">
+                            <i class="bi bi-star-fill col text-warning px-0"></i>
+                            <i class="bi bi-star-fill col text-warning px-0"></i>
+                            <i class="bi bi-star-fill col text-warning px-0"></i>
+                            <i class="bi bi-star-fill col text-warning px-0"></i>
+                            <i class="bi bi-star-fill col text-secondary px-0"></i>
+                            {{ book.rating }}
+                        </div>
+                    {% elif book.rating == 3 %}
+                        <div class="row no-gutters col-3">
+                            <i class="bi bi-star-fill col text-warning px-0"></i>
+                            <i class="bi bi-star-fill col text-warning px-0"></i>
+                            <i class="bi bi-star-fill col text-warning px-0"></i>
+                            <i class="bi bi-star-fill col text-secondary px-0"></i>
+                            <i class="bi bi-star-fill col text-secondary px-0"></i>
+                            {{ book.rating }}
+                        </div>
+                    {% elif book.rating == 2 %}
+                        <div class="row no-gutters col-3">
+                            <i class="bi bi-star-fill col text-warning px-0"></i>
+                            <i class="bi bi-star-fill col text-warning px-0"></i>
+                            <i class="bi bi-star-fill col text-secondary px-0"></i>
+                            <i class="bi bi-star-fill col text-secondary px-0"></i>
+                            <i class="bi bi-star-fill col text-secondary px-0"></i>
+                            {{ book.rating }}
+                        </div>
+                    {% elif book.rating == 1 %}
+                        <div class="row no-gutters col-3">
+                            <i class="bi bi-star-fill col text-secondary px-0"></i>
+                            <i class="bi bi-star-fill col text-secondary px-0"></i>
+                            <i class="bi bi-star-fill col text-secondary px-0"></i>
+                            <i class="bi bi-star-fill col text-secondary px-0"></i>
+                            <i class="bi bi-star-fill col text-secondary px-0"></i>
+                            {{ book.rating }}
+                        </div>
+                    {% else %}
+                        <div class="row no-gutters col-3">
+{#                            <i class="bi bi-star-fill col text-secondary px-0"></i>#}
+{#                            <i class="bi bi-star-fill col text-secondary px-0"></i>#}
+{#                            <i class="bi bi-star-fill col text-secondary px-0"></i>#}
+{#                            <i class="bi bi-star-fill col text-secondary px-0"></i>#}
+{#                            <i class="bi bi-star-fill col text-secondary px-0"></i>#}
+{#                            {{ book.rating }}#}
+                        </div>
+                    {% endif %}
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <p>Status: {{ book.read_status|lower|capfirst }}</p>
+                    </div>
+                    <div class="col">
+                        <p>Date Added: {{ book.date_added }}</p>
+                    </div>
+                </div>
+                <p>Genre: {{ book.genre }}</p>
+                {% if book.description|length < 250 %}
+                    <p>Description: {{ book.description }}</p>
+                {% else %}
+                    <p>Description: {{ book.description|slice:"0:200" }}
+                        <span id="dots">...</span>
+                        <span id="more" style="display: none">{{ book.description|slice:"200:3000" }}</span>
+                        <button onclick="myFunction()" id="myBtn" class="btn btn-sm btn-link">Read more</button>
+                    </p>
+                {% endif %}
+                <div class="row text-muted mt-2">
+                    <div class="col-md-6">
+                        <p><small>Page Count: {{ book.page_count }}</small></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><small>Recommended By: {{ book.recommended_by }}</small></p>
+
+                    </div>
+                </div>
+                <div class="row text-muted">
+                    {% if book.series_name is not None %}
+                        <div class="col-md-6">
+                            <p><small>Series Name: {{ book.series_name }}</small></p>
+                        </div>
+                    {% endif %}
+                    {% if book.series_number is not None %}
+                        <div class="col-md-6">
+                            <p><small>Number in Series: {{ book.series_number }}</small></p>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="row text-muted">
+                    {% if book.times_read is None %}
+                        <div class="col-md-6">
+                            <p><small>Times Read: 0</small></p>
+                        </div>
+                    {% else %}
+                        <div class="col-md-6">
+                            <p><small>Times Read: {{ book.times_read }}</small></p>
+                        </div>
+                    {% endif %}
+                    <div class="col-md-6">
+                        <p><small>Owned: {{ book.owned }}</small></p>
+                    </div>
+                </div>
+                <div class="row text-muted">
+                    {% if book.date_started is not None %}
+                        <div class="col-md-6">
+                            <p><small>Date Started: {{ book.date_started }}</small></p>
+                        </div>
+                    {% endif %}
+                    {% if book.date_finished is not None %}
+                        <div class="col-md-6">
+                            <p><small>Date Finished: {{ book.date_finished }}</small></p>
+                        </div>
+                    {% endif %}
+                </div>
+                {% if book.notes|length > 0 %}
+                    <p class="text-muted"><small>Notes: {{ book.notes|slice:"0:200" }}</small></p>
+                {% endif %}
+                <div class="row no-gutters">
+                    <div class="col">
+                       <a href="{% url 'update_book' book.id %}" class="btn btn-primary"><i class="bi bi-pencil-square px-2"></i>Edit Book</a>
+                    </div>
+                    <div class="col">
+                        <a href="{% url 'delete_book' book.id %}" class="btn btn-danger"><i class="bi bi-trash px-2"></i>Delete Book</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function myFunction() {
+      var dots = document.getElementById("dots");
+      var moreText = document.getElementById("more");
+      var btnText = document.getElementById("myBtn");
+
+      if (dots.style.display === "none") {
+        dots.style.display = "inline";
+        btnText.innerHTML = "Read more";
+        moreText.style.display = "none";
+      } else {
+        dots.style.display = "none";
+        btnText.innerHTML = "Read less";
+        moreText.style.display = "inline";
+      }
+    }
+</script>
+
+
+{% endblock %}
