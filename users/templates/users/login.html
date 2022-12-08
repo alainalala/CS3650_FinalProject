@@ -16,12 +16,12 @@
                             {% csrf_token %}
                             <div class="row pt-2">
                                 <div class="form-group mb-2">
-                                    <label for="inputImage">Username</label>
+                                    <label for="inputUsername">Username</label>
                                     <br>
                                     {{ form.username }}
                                 </div>
                                 <div class="form-group">
-                                    <label>Password</label>
+                                    <label for="inputPassword">Password</label>
                                     <br>
                                     {{ form.password }}
                                 </div>
@@ -30,7 +30,7 @@
                             <button class="btn btn-primary px-5" type="submit">Login</button>
                         </form>
                         <br>
-                        <p class="text-muted">
+                        <p class="">
                             Don't have an account?
                             <a href="{% url 'register' %}" class="register-link">Sign Up</a>
                         </p>

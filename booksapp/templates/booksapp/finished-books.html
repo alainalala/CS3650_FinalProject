@@ -38,7 +38,10 @@
             <div class="container">
                 <form class="d-flex" method="GET">
                     <input class="form-control br-0" type="text" placeholder="Search for Titles" aria-label="Search" name="book_title">
-                    <button class="btn btn-light" type="submit"><i class="bi bi-search"></i></button>
+                    <button class="btn btn-light" type="submit">
+                        <i class="bi bi-search"></i>
+                        <span class="sr-only">Search</span>
+                    </button>
                 </form>
             </div>
         </nav>
@@ -48,7 +51,7 @@
                     <div class=" mb-3 mx-2 border-white" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <a href="{% url 'detail' book.id %}"><img src="{{ book.image.url }}" class="img-fluid" alt="Image of Book Cover"></a>
+                                <a href="{% url 'detail' book.id %}"><img src="{{ book.image.url }}" class="img-fluid zoom" alt="Image of Book Cover"></a>
                             </div>
                             <div class="col-md-8">
                                 <div class="mx-4">

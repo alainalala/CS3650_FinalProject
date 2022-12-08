@@ -14,7 +14,7 @@
     <div class="bg-soft py-4">
         <div class="container py-4">
             <div class="row justify-content-center text-center">
-                <div class="col-5 my-4">
+                <div class="col-5 my-4 zoom">
                     <div class="card" id="stat1" style="height: 12rem">
                         <div class="card-text text-white">
                             <h3>{{ total_book_count }}</h3>
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-5 my-4">
+                <div class="col-5 my-4 zoom">
                     <div class="card" id="stat2" style="height: 12rem">
                         <div class="card-text text-white">
                             <h3>{{ not_started_book_count }}</h3>
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-5 my-4">
+                <div class="col-5 my-4 zoom">
                     <div class="card" id="stat3" style="height: 12rem">
                         <div class="card-text text-white">
                             <h3>{{ in_progress_book_count }}</h3>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-5 my-4">
+                <div class="col-5 my-4 zoom">
                     <div class="card" id="stat4" style="height: 12rem">
                         <div class="card-text text-white">
                             <h3>{{ finished_book_count }}</h3>
@@ -56,7 +56,7 @@
                 {% for book in recent_books %}
                     <div class="col py-2 px-4">
                         <div class="card border-white">
-                            <img class="card-img-top" src="{{ book.image.url }}" alt="Image of Book Cover">
+                            <img class="card-img-top zoom" src="{{ book.image.url }}" alt="Image of Book Cover">
                             <div class="card-body">
                                 <h5 class="card-title">{{ book.title }}</h5>
                                 <p class="card-list">
